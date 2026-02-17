@@ -37,6 +37,7 @@ footer {
     color: white;
     white-space: wrap;
     box-sizing: border-box;
+    font-weight: bold;
 }
 
 footer a {
@@ -45,4 +46,10 @@ footer a {
 table.index-table {
     float: left;
     border-collapse: collapse;
+
+.homeLinks {
+    -webkit-text-stroke: 3px white;
+    color: #3e472b;
+    paint-order: stroke;
+    font-size: 24px;
 }
