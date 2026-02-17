@@ -42,3 +42,7 @@ footer {
 footer a {
     color: lightblue;
 }
+table.index-table {
+    float: left;
+    border-collapse: collapse;
+}
