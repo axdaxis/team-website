@@ -37,8 +37,16 @@ footer {
     color: white;
     white-space: wrap;
     box-sizing: border-box;
+    font-weight: bold;
 }
 
 footer a {
     color: lightblue;
+}
+
+.homeLinks {
+    -webkit-text-stroke: 3px white;
+    color: #3e472b;
+    paint-order: stroke;
+    font-size: 24px;
 }
