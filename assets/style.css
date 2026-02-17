@@ -1,3 +1,19 @@
 body {
     font-family: sans-serif;
 }
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #848575;
+    padding: 8px;
+    text-align: center;
+    display: inline-block;
+    color: white;
+}
+
+footer a {
+    color: lightblue;
+}
