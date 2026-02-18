@@ -7,7 +7,38 @@
     </head>
     <body>
         <div class="mainContent">
-            
+            <h1>Order</h1>
+            <h4>We have developed a state-of-the-art online ordering system, so you can order take-out straight to your front door! You may also order in-advance for parties attending.</h4>
+            <hr>
+            <form method="post">
+                <label for="name">Name</label>
+                <input required id="name" type="text" placeholder="John Appleseed"/>
+                <br/>
+                <label for="tel">Phone number</label>
+                <input required id="tel" type="tel" placeholder="(555) 867-5309"/>
+                <br/>
+                <label for="email">E-mail</label>
+                <input required id="email" type="email" placeholder="holidaygirl1225@msn.com">
+                <br/><br/>
+                <fieldset style="display: inline-block;">
+                    <legend>When do you want your order?</legend>
+                    <input required id="whenToday" type="checkbox"/>
+                    <label for="whenToday">ASAP [Today]</label>
+                    <input required type="time" id="todayTime"/>
+                    <br/>
+                    <input required id="whenLater" type="checkbox"/>
+                    <label for="whenLater">Later</label>
+                    <input required type="datetime-local" id="dateLater"/>
+                </fieldset>
+                <br/><br/>
+                <label for="order">What would you like to order?</label>
+                <aside><small>Special instructions may also reside here.</small></aside>
+                <textarea required rows="5" cols="40" id="order" name="order" autocomplete="off"></textarea>
+                <br/>
+                
+                <input type="submit">
+
+            </form>
         </div>
         <footer>
             <b>Copyright &copy; 2026 All Rights Reserved. &bullet; Located near <a href="https://www.nps.gov/katm/index.htm">Katmai National Park</a>.</b>
