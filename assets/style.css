@@ -1,7 +1,19 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+.mainContent {
+    margin: 8px;
+    height: 100%;
+    margin-bottom: 40px;
+}
+
 body {
     font-family: sans-serif;
     background-color: #475651;
     color: white;
+    margin: 0;
 }
 
 #background {
@@ -30,14 +42,16 @@ footer {
     bottom: 0;
     left: 0;
     width: 100%;
+    height: 40px;
     background-color: #848575;
     padding: 8px;
     text-align: center;
-    display: inline-block;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     color: white;
     white-space: wrap;
     box-sizing: border-box;
-    font-weight: bold;
 }
 
 footer a {
@@ -46,6 +60,7 @@ footer a {
 table.index-table {
     float: left;
     border-collapse: collapse;
+}
 
 .homeLinks {
     -webkit-text-stroke: 3px white;
