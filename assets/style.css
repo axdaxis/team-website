@@ -107,4 +107,18 @@ table.index-table {
         line-height: 40px;
         visibility: hidden;
     }
+    header { 
+    visibility: visible;
+    background-color: #848575; 
+    padding-top: 15px; 
+    padding-bottom: 15px; 
+    word-spacing: 25px;
+    }
+    
+}
+@media screen and (min-width: 1000px) { /* Larger screens. Vertical navigation */
+    header {
+        display: none;
+        background-color: #848575;
+    }
 }
