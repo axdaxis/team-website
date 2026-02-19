@@ -12,9 +12,12 @@ html, body {
 
 body {
     font-family: sans-serif;
-    background-color: #475651;
+    background: linear-gradient(180deg,rgba(62, 71, 43, 1) 0%, rgba(132, 133, 118, 1) 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     color: white;
     margin: 0;
+    text-shadow: 1px 2px 8px black;
 }
 
 #background {
