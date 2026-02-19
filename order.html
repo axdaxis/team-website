@@ -16,7 +16,7 @@
             <h1>Order</h1>
             <h4>We have developed a state-of-the-art online ordering system, so you can order take-out straight to your front door! You may also order in-advance for parties attending.</h4>
             <hr>
-            <form method="post">
+            <form method="post" id="orderForm">
                 <label for="name">Name</label>
                 <input required id="name" type="text" placeholder="John Appleseed"/>
                 <br/>
@@ -38,50 +38,7 @@
                 </fieldset>
                 <br/><br/>
                 <label for="order">What would you like to order?</label>
-                <fieldset>
-                    <b>Appetizers</b><br/>
-
-                    <input type="checkbox" id="itemOne" class="item" value="5.99">
-                    <label for="itemOne">Cheesy Breadsticks, $5.99</label>
-                    <input type="number" min="1" max="20">
-                    <br/>
-
-
-
-                    <input type="checkbox" id="itemTwo" class="item" value="5.99">
-                    <label for="itemTwo">Caprese-skewers, $5.99</label>
-                    <br/>
-                    <b>Entrees</b><br/>
-                    <input type="checkbox" id="itemThree" class="item" value="9.99">
-                    <label for="itemThree">Small Cheese Pizza, $9.99</label>
-                    <br/>
-                    <input type="checkbox" id="itemFour" class="item" value="9.99">
-                    <label for="itemFour">Medium Cheese Pizza, $9.99</label>
-                    <br/>
-                    <input type="checkbox" id="itemFive" class="item" value="9.99">
-                    <label for="itemFive">Large Cheese Pizza, $9.99</label>
-                    <br/>
-                    <input type="checkbox" id="itemSix" class="item" value="9.99">
-                    <label for="itemSix">Pepperoni Pizza, $9.99</label>
-                    <br/>
-                    <input type="checkbox" id="itemSeven" class="item" value="9.99">
-                    <label for="itemSeven">Pepperoni Pizza, $9.99</label>
-                    <br/>
-                    <input type="checkbox" id="itemEight" class="item" value="9.99">
-                    <label for="itemEight">Pepperoni Pizza, $9.99</label>
-                    <br/>
-                    <input type="checkbox" id="itemNine" class="item" value="9.99">
-                    <label for="itemNine">Pepperoni Pizza, $9.99</label>
-                    <br/>
-                    <input type="checkbox" id="itemTen" class="item" value="9.99">
-                    <label for="itemTen">Pepperoni Pizza, $9.99</label>
-                    <br/>
-                    <input type="checkbox" id="itemEleven" class="item" value="9.99">
-                    <label for="itemEleven">Pepperoni Pizza, $9.99</label>
-                    <br/>
-                    <input type="checkbox" id="itemTwelve" class="item" value="9.99">
-                    <label for="itemTwelve">Pepperoni Pizza, $9.99</label>
-                    <br/>
+                <fieldset id="items">
                 </fieldset>
                 <br/>
                 
@@ -93,4 +50,65 @@
             <b>Copyright &copy; 2026 All Rights Reserved. &bullet; Located near <a href="https://www.nps.gov/katm/index.htm">Katmai National Park</a>.</b>
         </footer>
     </body>
+    <script>
+        const form = document.getElementById("items");
+        const items = [
+            // name, price, has sizes?
+            ["Cheesy Breadsticks", 5.99, false],
+            ["Caprese-skewers", 5.99, false],
+            ["Cheese Pizza", 13.99, true],
+            ["Pepperoni Pizza", 13.99, true],
+            ["Sausage Pizza Special", 13.99, true],
+            ["Italian Pizza", 11.99, true],
+            ["Hawaiian Pizza", 11.99, true],
+            ["Water", 1.99, false],
+            ["Fountain Drink", 1.99, false],
+            ["Lemonade", 1.99, false],
+            ["Cheesecake", 7.99, false],
+            ["Cinammon Knots", 7.99, false],
+        ]
+        for (let index = 0; index < items.length; index++) {
+            const element = items[index];
+
+            const inputCheck = document.createElement("input");
+            inputCheck.type = "checkbox";
+            inputCheck.id = `item${index + 1}`
+            inputCheck.classList.add("item", `item${index + 1}`);
+            inputCheck.value = element[1];
+            form.appendChild(inputCheck);
+            
+            const label = document.createElement("label");
+            label.htmlFor = `item${index + 1}`
+            label.innerText = `${element[0]}, $${element[1]} `
+            form.appendChild(label);
+
+            const quantity = document.createElement("input");
+            quantity.classList.add(`item${index + 1}`);
+            quantity.id = `item${index + 1}Quantity`
+            quantity.type = "number";
+            quantity.placeholder = "#"
+            quantity.min = 1;
+            quantity.max = 20;
+            form.appendChild(quantity);
+
+            if (element[2] == true) {
+                const sizes = document.createElement("select");
+            
+                const smallSize = document.createElement("option");
+                const mediumSize = document.createElement("option");
+                const largeSize = document.createElement("option");
+                smallSize.value = "Small";
+                mediumSize.value = "Medium";
+                largeSize.value = "Large"
+                smallSize.innerText = "Small";
+                mediumSize.innerText = "Medium";
+                largeSize.innerText = "Large";
+
+                sizes.append(smallSize, mediumSize, largeSize)
+                form.appendChild(sizes)
+            }
+
+            form.appendChild(document.createElement("br"))
+        }
+    </script>
 </html>
