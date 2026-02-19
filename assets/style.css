@@ -86,6 +86,10 @@ table.index-table {
     font-weight: bold;
 }
 
+header {
+    text-align: center;
+}
+
 @media screen and (max-width: 1000px) { /* Smaller screens/mobile. Horizontal navigation */
     .mainContent {
         margin-left: 8px;
