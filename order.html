@@ -16,7 +16,7 @@
             <h1>Order</h1>
             <h4>We have developed a state-of-the-art online ordering system, so you can order take-out straight to your front door! You may also order in-advance for parties attending.</h4>
             <hr>
-            <form method="post" id="orderForm">
+            <form method="post" id="orderForm" onsubmit="sumTotal()">
                 <label for="name">Name</label>
                 <input required id="name" type="text" placeholder="John Appleseed"/>
                 <br/>
@@ -28,16 +28,16 @@
                 <br/><br/>
                 <fieldset style="display: inline-block;">
                     <legend>When do you want your order?</legend>
-                    <input required id="whenToday" type="checkbox"/>
+                    <input id="whenToday" type="checkbox"/>
                     <label for="whenToday">ASAP [Today]</label>
-                    <input required type="time" id="todayTime"/>
+                    <input type="time" id="todayTime"/>
                     <br/>
-                    <input required id="whenLater" type="checkbox"/>
+                    <input id="whenLater" type="checkbox"/>
                     <label for="whenLater">Later</label>
-                    <input required type="datetime-local" id="dateLater"/>
+                    <input type="datetime-local" id="dateLater"/>
                 </fieldset>
                 <br/><br/>
-                <label for="order">What would you like to order?</label>
+                <p>What would you like to order?</p>
                 <fieldset id="items">
                 </fieldset>
                 <br/>
@@ -51,6 +51,10 @@
         </footer>
     </body>
     <script>
+        function sumTotal() {
+            alert("wip");
+        }
+
         const form = document.getElementById("items");
         const items = [
             // name, price, has sizes?
@@ -87,13 +91,14 @@
             quantity.id = `item${index + 1}Quantity`
             quantity.type = "number";
             quantity.placeholder = "#"
+            quantity.value = "1";
             quantity.min = 1;
             quantity.max = 20;
             form.appendChild(quantity);
 
             if (element[2] == true) {
                 const sizes = document.createElement("select");
-            
+                sizes.id = `item${index + 1}Sizes`
                 const smallSize = document.createElement("option");
                 const mediumSize = document.createElement("option");
                 const largeSize = document.createElement("option");
@@ -104,11 +109,11 @@
                 mediumSize.innerText = "Medium";
                 largeSize.innerText = "Large";
 
-                sizes.append(smallSize, mediumSize, largeSize)
-                form.appendChild(sizes)
+                sizes.append(smallSize, mediumSize, largeSize);
+                form.appendChild(sizes);
             }
 
-            form.appendChild(document.createElement("br"))
+            form.appendChild(document.createElement("br"));
         }
     </script>
 </html>
