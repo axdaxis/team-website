@@ -58,16 +58,20 @@ footer a {
     color: lightblue;
 }
 table.index-table {
-    display: flex;
-    position: absolute;
+    display: block;
+    overflow-y: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
     float: left;
     border-style: solid;
     border-width: 4px;
-    border-color: black;
+    border-color: #848575;
     height: 100%;
     width: 12%;
-    max-height: 850px; 
+    max-height: 1000px; 
     background-color: #848575;
+    line-height: 200px;
 }
 
 .homeLinks {
@@ -76,4 +80,8 @@ table.index-table {
     paint-order: stroke;
     font-size: 24px;
     font-weight: bold;
+}
+
+@media screen and (max-width: 1000px) { /* Smaller screens/mobile. Horizontal navigation */
+
 }
