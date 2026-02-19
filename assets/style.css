@@ -60,7 +60,9 @@ footer a {
 table.index-table {
     display: block;
     overflow-y: auto;
-    position: absolute;
+    position: fixed;
+    top: 0;
+    left: 0;
     float: left;
     border-style: solid;
     border-width: 4px;
@@ -78,4 +80,8 @@ table.index-table {
     paint-order: stroke;
     font-size: 24px;
     font-weight: bold;
+}
+
+@media screen and (max-width: 1000px) { /* Smaller screens/mobile. Horizontal navigation */
+
 }
