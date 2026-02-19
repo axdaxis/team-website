@@ -1,11 +1,93 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="assets/style.css" rel="stylesheet" type="text/css"/> 
-        <title>Contact</title>
+        <title>Contact/Reservation</title>
+
+<style>
+    body{ 
+        font-family: Arial, sans-serif;
+        background: #f4f4f4; 
+        padding: 40px;
+    }
+    .container{
+        background: white;
+        padding: 25px;
+        max-width: 500px;
+        margin: auto;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+    h2{
+        text-align: center;
+    }
+    input,textarea,select{
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+    }
+    button{
+        width: 100%;
+        padding: 12px;
+        background: #28a745;
+        color:white;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    button:hover{
+        background: #218838;
+    }
+</style>
     </head>
     <body>
+        <div class="container">
+        <h2>Contact or Reserve a Table</h2>
+        <form onsubmit="return confirmForm()">
+        <label>Name:</label>
+        <input type="text" id="name"required>
+        <label>Email:</label>
+        <input type="email" id="email"required>
+        <label>Choose Option:</label>
+        <select id="type">
+        <option value="Contact">Contact Resturant</option>
+        <option value="Reservation">Reserve Table</option>
+        </select>
+        <label>Date:</label>
+        <input type="date" id="date">
+        <label>Time:</label>
+        <input type="time" id="time">
+        <label>Message:</label>
+        <textarea id="Message"></textarea>
+        
+        <button type="submit">Submit</button>
+        </form>
+        </div>
+<script>
+function confirmForm() {
+let name = document.getElementById("name").value;
+let email = document.getElementById("email").value;
+let type = document.getElementById("type").value;
+let date = document.getElementById("date").value;
+let time = document.getElementById("time").value;
+let message = document.getElementById("message").value;
 
+let confirmation = "Thank you " + name + "!\n\n";
+confirmation += "Type: " + type + "\n";
+confirmation += "Email: " + email + "\n";
+
+if(type === "Reservation") {
+confirmation += "Date: " + date + "\n";
+confirmation += "Time: " + time + "\n";
+}
+
+confirmation += "Message: " + message;
+
+alert(confirmation);
+return false; // prevents page refresh
+}
+</script>
     </body>
 </html>
