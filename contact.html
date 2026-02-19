@@ -9,12 +9,12 @@
 <style>
     body{ 
         font-family: Arial, sans-serif;
-        background: #f4f4f4; 
+        background: #475651 ; 
         padding: 40px;
     }
     .container{
-        background: white;
-        padding: 25px;
+        background: #475651;
+        padding: 50px;
         max-width: 500px;
         margin: auto;
         border-radius: 8px;
@@ -31,8 +31,8 @@
     button{
         width: 100%;
         padding: 12px;
-        background: #28a745;
-        color:white;
+        background: white;
+        color: #3e472b ;
         border: none;
         font-size: 16px;
         cursor: pointer;
@@ -65,7 +65,9 @@
         <button type="submit">Submit</button>
         </form>
         </div>
-<script>
+        
+    <div id="output" style="margin-top:20px; padding:10px; border:1px solid #ccc;"></div>
+    <script>
 function confirmForm() {
 let name = document.getElementById("name").value;
 let email = document.getElementById("email").value;
@@ -74,20 +76,24 @@ let date = document.getElementById("date").value;
 let time = document.getElementById("time").value;
 let message = document.getElementById("message").value;
 
-let confirmation = "Thank you " + name + "!\n\n";
-confirmation += "Type: " + type + "\n";
-confirmation += "Email: " + email + "\n";
+let confirmation = "<h3>Submission Details</h3>";
+confirmation += "<strong>Name:</strong> " + name + "<br>";
+confirmation += "<strong>Type:</strong> " + type + "<br>";
+confirmation += "<strong>Email:</strong> " + email + "<br>";
 
 if(type === "Reservation") {
-confirmation += "Date: " + date + "\n";
-confirmation += "Time: " + time + "\n";
+confirmation += "<strong>Date:</strong> " + date + "<br>";
+confirmation += "<strong>Time:</strong> " + time + "<br>";
 }
 
-confirmation += "Message: " + message;
+confirmation += "<strong>Message:</strong> " + message;
 
-alert(confirmation);
+// Display inside the div
+document.getElementById("output").innerHTML = confirmation;
+
 return false; // prevents page refresh
 }
 </script>
+</div>
     </body>
 </html>
