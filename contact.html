@@ -9,12 +9,12 @@
 <style>
     body{ 
         font-family: Arial, sans-serif;
-        background: #f4f4f4; 
+        background: #475651 ; 
         padding: 40px;
     }
     .container{
-        background: white;
-        padding: 25px;
+        background: #475651;
+        padding: 50px;
         max-width: 500px;
         margin: auto;
         border-radius: 8px;
@@ -31,8 +31,8 @@
     button{
         width: 100%;
         padding: 12px;
-        background: #28a745;
-        color:white;
+        background: white;
+        color: #3e472b ;
         border: none;
         font-size: 16px;
         cursor: pointer;
@@ -42,6 +42,19 @@
     }
 </style>
     </head>
+    <header>
+            <a class="homeLinks" href="index.html">Home</a><a class="homeLinks" href="order.html">Catering/Ordering</a><a class="homeLinks" href="menu.html">Menu</a><a class="homeLinks" href="reviews.html">Reviews</a><a class="homeLinks" href="contact.html">Contact</a>
+        </header>
+        <table class="index-table"> 
+            <tr><td><a class="homeLinks" href="index.html">Home</a></td></tr>
+            <tr><td><a class="homeLinks" href="order.html">Catering/Ordering</a></td></tr>
+            <tr><td><a class="homeLinks" href="menu.html">Menu</a></td></tr>
+            <tr><td><a class="homeLinks" href="reviews.html">Reviews</a></td></tr>
+            <tr><td><a class="homeLinks" href="contact.html">Contact</a></td></tr>
+        </table>
+         <footer>
+            <b>Copyright &copy; 2026 All Rights Reserved. &bullet; Located near <a href="https://www.nps.gov/katm/index.htm">Katmai National Park</a>.</b>
+        </footer>
     <body>
         <div class="container">
         <h2>Contact or Reserve a Table</h2>
@@ -65,7 +78,9 @@
         <button type="submit">Submit</button>
         </form>
         </div>
-<script>
+        
+    <div id="output" style="margin-top:20px; padding:10px; border:1px solid #ccc;"></div>
+    <script>
 function confirmForm() {
 let name = document.getElementById("name").value;
 let email = document.getElementById("email").value;
@@ -74,20 +89,24 @@ let date = document.getElementById("date").value;
 let time = document.getElementById("time").value;
 let message = document.getElementById("message").value;
 
-let confirmation = "Thank you " + name + "!\n\n";
-confirmation += "Type: " + type + "\n";
-confirmation += "Email: " + email + "\n";
+let confirmation = "<h3>Submission Details</h3>";
+confirmation += "<strong>Name:</strong> " + name + "<br>";
+confirmation += "<strong>Type:</strong> " + type + "<br>";
+confirmation += "<strong>Email:</strong> " + email + "<br>";
 
 if(type === "Reservation") {
-confirmation += "Date: " + date + "\n";
-confirmation += "Time: " + time + "\n";
+confirmation += "<strong>Date:</strong> " + date + "<br>";
+confirmation += "<strong>Time:</strong> " + time + "<br>";
 }
 
-confirmation += "Message: " + message;
+confirmation += "<strong>Message:</strong> " + message;
 
-alert(confirmation);
+// Display inside the div
+document.getElementById("output").innerHTML = confirmation;
+
 return false; // prevents page refresh
 }
 </script>
+</div>
     </body>
 </html>

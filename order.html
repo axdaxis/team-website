@@ -4,80 +4,177 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="assets/style.css" rel="stylesheet" type="text/css"/> 
         <title>Order</title>
+        <style>
+            #orderingImage {
+                height: 300px;
+                width: 300px;
+                object-fit: cover;
+                object-position: right;
+                float: right;
+                border-radius: 32px;
+                padding: 16px;
+            }
+        </style>
     </head>
     <body>
+        <header>
+            <a class="homeLinks" href="index.html">Home</a><a class="homeLinks" href="order.html">Catering/Ordering</a><a class="homeLinks" href="menu.html">Menu</a><a class="homeLinks" href="reviews.html">Reviews</a><a class="homeLinks" href="contact.html">Contact</a>
+        </header>
+        <table class="index-table"> 
+            <tr><td><a class="homeLinks" href="index.html">Home</a></td></tr>
+            <tr><td><a class="homeLinks" href="order.html">Catering/Ordering</a></td></tr>
+            <tr><td><a class="homeLinks" href="menu.html">Menu</a></td></tr>
+            <tr><td><a class="homeLinks" href="reviews.html">Reviews</a></td></tr>
+            <tr><td><a class="homeLinks" href="contact.html">Contact</a></td></tr>
+        </table>
         <div class="mainContent">
+            <img id="orderingImage" src="./images/onlineOrdering.jpg"/>
             <h1>Order</h1>
             <h4>We have developed a state-of-the-art online ordering system, so you can order take-out straight to your front door! You may also order in-advance for parties attending.</h4>
             <hr>
-            <form method="post">
+            <form id="orderForm" onsubmit="submitForm();">
                 <label for="name">Name</label>
-                <input required id="name" type="text" placeholder="John Appleseed"/>
+                <input id="name" type="text" placeholder="John Appleseed"/>
                 <br/>
                 <label for="tel">Phone number</label>
-                <input required id="tel" type="tel" placeholder="(555) 867-5309"/>
+                <input id="tel" type="tel" placeholder="(555) 867-5309"/>
                 <br/>
                 <label for="email">E-mail</label>
-                <input required id="email" type="email" placeholder="holidaygirl1225@msn.com">
+                <input id="email" type="email" placeholder="holidaygirl1225@msn.com">
                 <br/><br/>
                 <fieldset style="display: inline-block;">
                     <legend>When do you want your order?</legend>
-                    <input required id="whenToday" type="checkbox"/>
+                    <input id="whenToday" type="checkbox"/>
                     <label for="whenToday">ASAP [Today]</label>
-                    <input required type="time" id="todayTime"/>
+                    <input type="time" id="todayTime"/>
                     <br/>
-                    <input required id="whenLater" type="checkbox"/>
+                    <input id="whenLater" type="checkbox"/>
                     <label for="whenLater">Later</label>
-                    <input required type="datetime-local" id="dateLater"/>
+                    <input type="datetime-local" id="dateLater"/>
                 </fieldset>
                 <br/><br/>
-                <label for="order">What would you like to order?</label>
-                <fieldset>
-                    <input type="checkbox" id="itemOne" class="item" value="9.99">
-                    <label for="itemOne">Pepperoni Pizza, $9.99</label>
-                    <br/>
-                    <input type="checkbox" id="itemTwo" class="item" value="9.99">
-                    <label for="itemTwo">Pepperoni Pizza, $9.99</label>
-                    <br/>
-                    <input type="checkbox" id="itemThree" class="item" value="9.99">
-                    <label for="itemThree">Pepperoni Pizza, $9.99</label>
-                    <br/>
-                    <input type="checkbox" id="itemFour" class="item" value="9.99">
-                    <label for="itemFour">Pepperoni Pizza, $9.99</label>
-                    <br/>
-                    <input type="checkbox" id="itemFive" class="item" value="9.99">
-                    <label for="itemFive">Pepperoni Pizza, $9.99</label>
-                    <br/>
-                    <input type="checkbox" id="itemSix" class="item" value="9.99">
-                    <label for="itemSix">Pepperoni Pizza, $9.99</label>
-                    <br/>
-                    <input type="checkbox" id="itemSeven" class="item" value="9.99">
-                    <label for="itemSeven">Pepperoni Pizza, $9.99</label>
-                    <br/>
-                    <input type="checkbox" id="itemEight" class="item" value="9.99">
-                    <label for="itemEight">Pepperoni Pizza, $9.99</label>
-                    <br/>
-                    <input type="checkbox" id="itemNine" class="item" value="9.99">
-                    <label for="itemNine">Pepperoni Pizza, $9.99</label>
-                    <br/>
-                    <input type="checkbox" id="itemTen" class="item" value="9.99">
-                    <label for="itemTen">Pepperoni Pizza, $9.99</label>
-                    <br/>
-                    <input type="checkbox" id="itemEleven" class="item" value="9.99">
-                    <label for="itemEleven">Pepperoni Pizza, $9.99</label>
-                    <br/>
-                    <input type="checkbox" id="itemTwelve" class="item" value="9.99">
-                    <label for="itemTwelve">Pepperoni Pizza, $9.99</label>
-                    <br/>
+                <p>What would you like to order?</p>
+                <fieldset style="display: inline-block;" id="items">
+
                 </fieldset>
                 <br/>
-                
+                <p id="subtotal">Subtotal: $0.00</p>
+                <p id="tax">Estimated tax: $0.00</p>
+                <p id="fullTotal">Total: $0.00</p>
                 <input type="submit">
-
             </form>
         </div>
         <footer>
             <b>Copyright &copy; 2026 All Rights Reserved. &bullet; Located near <a href="https://www.nps.gov/katm/index.htm">Katmai National Park</a>.</b>
         </footer>
     </body>
+    <script>
+        const form = document.getElementById("items");
+        const subTotal = document.getElementById("subtotal");
+        const taxText = document.getElementById("tax");
+        const finalTotal = document.getElementById("fullTotal");
+        estPrice = 0;
+
+        const items = [
+            // name, price, has sizes?
+            ["Cheesy Breadsticks", 5.99, false],
+            ["Caprese-skewers", 5.99, false],
+            ["Cheese Pizza", 13.99, true],
+            ["Pepperoni Pizza", 13.99, true],
+            ["Sausage Pizza Special", 13.99, true],
+            ["Italian Pizza", 11.99, true],
+            ["Hawaiian Pizza", 11.99, true],
+            ["Water", 1.99, false],
+            ["Fountain Drink", 1.99, false],
+            ["Lemonade", 1.99, false],
+            ["Cheesecake", 7.99, false],
+            ["Cinammon Knots", 7.99, false],
+        ]
+        for (let index = 0; index < items.length; index++) {
+            const element = items[index];
+
+            const inputCheck = document.createElement("input");
+            inputCheck.type = "checkbox";
+            inputCheck.id = `item${index + 1}`
+            inputCheck.classList.add("item", `item${index + 1}`);
+            inputCheck.value = element[1];
+            inputCheck.addEventListener("change", updateTotal);
+            form.appendChild(inputCheck);
+            
+            const label = document.createElement("label");
+            label.htmlFor = `item${index + 1}`
+            label.innerText = `${element[0]}, $${element[1]} `
+            form.appendChild(label);
+
+            const quantity = document.createElement("input");
+            quantity.classList.add(`item${index + 1}`);
+            quantity.id = `item${index + 1}Quantity`
+            quantity.type = "number";
+            quantity.placeholder = "#"
+            quantity.value = "1";
+            quantity.min = 1;
+            quantity.max = 999;
+            quantity.addEventListener("change", updateTotal);
+            form.appendChild(quantity);
+
+            if (element[2] == true) {
+                const sizes = document.createElement("select");
+                sizes.id = `item${index + 1}Sizes`
+                const smallSize = document.createElement("option");
+                const mediumSize = document.createElement("option");
+                const largeSize = document.createElement("option");
+                smallSize.value = "Small";
+                mediumSize.value = "Medium";
+                largeSize.value = "Large"
+                smallSize.innerText = "Small";
+                mediumSize.innerText = "Medium";
+                largeSize.innerText = "Large";
+
+                sizes.append(smallSize, mediumSize, largeSize);
+                form.appendChild(sizes);
+            }
+
+            form.appendChild(document.createElement("br"));
+        }
+
+        function updateTotal() {
+            let price = parseFloat(sumTotal());
+            let finalPrice = (price + (price * 0.0825)).toFixed(2);
+            subTotal.innerText = "Subtotal: $" + (price.toFixed(2));
+            tax.innerText = "Estimated tax: $" + ((price * 0.0825).toFixed(2));
+            finalTotal.innerText = "Total: $" + finalPrice;
+            estPrice = finalPrice;  
+            console.log(estPrice)
+        }
+
+        function sumTotal(event) {
+            total = 0;
+            const items = document.getElementsByClassName("item");
+            const itemCount = items.length;
+            for (let index = 0; index < items.length; index++) {
+                let itemCheck = document.querySelector(`#item${index + 1}`);
+                if (itemCheck.checked == true) {
+                    let quantityChecker = document.querySelector(`#item${index + 1}Quantity`);
+                    let price = itemCheck.value * (quantityChecker.value ?? 1);
+                    total += price;
+                }
+            }
+            total = total.toFixed(2);
+            return total;
+        }
+
+        function submitForm() {
+            event.preventDefault();
+            if (estPrice != 0) {
+                const total = estPrice;
+                const date = new Date();
+                date.setMinutes(date.getMinutes() + Math.floor(Math.random() * 69));
+
+                if (window.confirm(`Almost there! Please confirm your order for a total of $${total}.`)) {
+                    alert(`Great! Your order will be ready ${date.toLocaleString("en-us")}.\nPlease be prepared to pay at time of arrival.\nThank you for choosing The Great Glacier!`);
+                }
+            }
+            return false;
+        }
+    </script>
 </html>

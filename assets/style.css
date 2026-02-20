@@ -7,30 +7,17 @@ html, body {
     margin: 8px;
     height: 100%;
     margin-bottom: 40px;
+    margin-left: 230px;
 }
 
 body {
     font-family: sans-serif;
-    background-color: #475651;
+    background: linear-gradient(180deg,rgba(62, 71, 43, 1) 0%, rgba(132, 133, 118, 1) 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     color: white;
     margin: 0;
-}
-
-#background {
-    position: fixed;
-    top: 5%;
-    left: 5%;
-    z-index: -1;
-    width: 90%;
-    min-height: 100%;
-    object-fit: cover;
-}
-
-#home {
-    background-color: #3e472b;
-    margin: 5%;
-    display: inline-block;
-    padding: 12px;
+    text-shadow: 1px 2px 8px black;
 }
 
 a {
@@ -68,10 +55,9 @@ table.index-table {
     border-width: 4px;
     border-color: #848575;
     height: 100%;
-    width: 12%;
-    max-height: 1000px; 
+    width: 220px;
     background-color: #848575;
-    line-height: 200px;
+    line-height: 120px;
 }
 
 .homeLinks {
@@ -82,6 +68,50 @@ table.index-table {
     font-weight: bold;
 }
 
+header {
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 16px;
+}
+
 @media screen and (max-width: 1000px) { /* Smaller screens/mobile. Horizontal navigation */
+    .mainContent {
+        margin-left: 8px;
+    }
+    table.index-table {
+        display: block;
+        overflow-x: auto;
+        position: fixed;
+        top: 0;
+        left: 0;
+        float: left;
+        border-style: solid;
+        border-width: 4px;
+        border-color: #848575;
+        height: 40px;
+        width: 100%;
+        max-width: 1000px; 
+        background-color: #848575;
+        line-height: 40px;
+        visibility: hidden;
+    }
+    header { 
+        visibility: visible;
+        background-color: #848575; 
+        padding-top: 15px; 
+        padding-bottom: 15px; 
+        word-spacing: 25px;
+    }
+    #orderingImage {
+        display: none;
+    }
+}
+@media screen and (min-width: 1000px) { /* Larger screens. Vertical navigation */
+    header {
+        display: none;
+        background-color: #848575;
+    }
 
 }
