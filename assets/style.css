@@ -20,23 +20,6 @@ body {
     text-shadow: 1px 2px 8px black;
 }
 
-#background {
-    position: fixed;
-    top: 5%;
-    left: 5%;
-    z-index: -1;
-    width: 90%;
-    min-height: 100%;
-    object-fit: cover;
-}
-
-#home {
-    background-color: #3e472b;
-    margin: 5%;
-    display: inline-block;
-    padding: 12px;
-}
-
 a {
     color: lightblue;
 }
@@ -73,9 +56,8 @@ table.index-table {
     border-color: #848575;
     height: 100%;
     width: 220px;
-    max-height: 1000px; 
     background-color: #848575;
-    line-height: 200px;
+    line-height: 120px;
 }
 
 .homeLinks {
@@ -88,6 +70,10 @@ table.index-table {
 
 header {
     text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 16px;
 }
 
 @media screen and (max-width: 1000px) { /* Smaller screens/mobile. Horizontal navigation */
@@ -112,17 +98,20 @@ header {
         visibility: hidden;
     }
     header { 
-    visibility: visible;
-    background-color: #848575; 
-    padding-top: 15px; 
-    padding-bottom: 15px; 
-    word-spacing: 25px;
+        visibility: visible;
+        background-color: #848575; 
+        padding-top: 15px; 
+        padding-bottom: 15px; 
+        word-spacing: 25px;
     }
-    
+    #orderingImage {
+        display: none;
+    }
 }
 @media screen and (min-width: 1000px) { /* Larger screens. Vertical navigation */
     header {
         display: none;
         background-color: #848575;
     }
+
 }

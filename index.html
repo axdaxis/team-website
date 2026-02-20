@@ -12,20 +12,53 @@
             table {
                 text-align: left;
             }
+            .mainContent {
+                position: static;
+                z-index: 2;
+            }
+            .mainText {
+                -webkit-backdrop-filter: blur(12px);
+                backdrop-filter: blur(12px);
+                display: inline-block;
+                padding: 8px;
+                top: 15%;
+                position: relative;
+            }
+            #background {
+                width: calc(100% - 240px);
+                max-width: 100%;
+                object-fit: cover;
+                object-position: center;
+                position: absolute;
+                left: 0;
+                top: 8px;
+                z-index: -1;
+                margin-left: 230px;
+                box-sizing: content-box ;
+            }
+            @media screen and (max-width: 1000px) {
+                #background {
+                    display: none;
+                }
+            }
         </style>
     </head>
     <body>
         <header>
-            <a class="homeLinks" href="order.html">Catering/Ordering </a><a class="homeLinks" href="menu.html">Menu </a><a class="homeLinks" href="reviews.html">Reviews </a><a class="homeLinks" href="contact.html">Contact </a>
+            <a class="homeLinks" href="order.html">Catering/Ordering</a><a class="homeLinks" href="menu.html">Menu</a><a class="homeLinks" href="reviews.html">Reviews</a><a class="homeLinks" href="contact.html">Contact</a>
         </header>
         <table class="index-table"> 
+            <tr><td><a class="homeLinks" href="index.html">Home</a></td></tr>
             <tr><td><a class="homeLinks" href="order.html">Catering/Ordering</a></td></tr>
             <tr><td><a class="homeLinks" href="menu.html">Menu</a></td></tr>
             <tr><td><a class="homeLinks" href="reviews.html">Reviews</a></td></tr>
             <tr><td><a class="homeLinks" href="contact.html">Contact</a></td></tr>
         </table>
+        <img src="./images/background.jpg" id="background">
         <div class="mainContent">
-        <h1> You have made it to our Index page!</h1>
+        <div class="mainText">
+        <h1><i>The Great Glacier</i></h1>
+        <h2> You have made it to our Index page!</h2>
         <h3> Here, you will find our catering/ordering page, menu page, review page, and contact information page. 
         
                     <p>
@@ -33,10 +66,7 @@
                     <br/>
                     Feel free to check out our menu, and ordering page when you can't resist your cravings any longer! 
                 </p>
-                <footer>
-                    Copyright &copy; 2026 All Rights Reserved. &bullet;Located near: <a href="https://www.nps.gov/katm/index.htm"> Katmai National Park</a>.
-                </footer>
-        </div>
+        </div></div>
         </div>
         <footer>
             <b>Copyright &copy; 2026 All Rights Reserved. &bullet; Located near <a href="https://www.nps.gov/katm/index.htm">Katmai National Park</a>.</b>
